@@ -103,10 +103,10 @@ Sample Input / Output
         Time: 10:30 AM
         Status: Confirmed
 
-Tool/Technologies Used
-        PLantUML
-        Eclipse IDE 
-        VS Code
+Tool/Technologies Used: 
+        - PLantUML
+        - Eclipse IDE 
+        - VS Code
 
 Academic Information
 
