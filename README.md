@@ -68,7 +68,7 @@ The Hospital Appointment Management System is designed to digitize and simplify 
 
 1. Clone the repository:
 ```bash
-git clone <repository-link>
+git clone https://github.com/Harisankar005/22AIE111_CaseStudy_3/tree/main
 ```
 2. Open the project in your preferred IDE.
     Compile the Java files:
