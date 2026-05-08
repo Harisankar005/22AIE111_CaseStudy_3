@@ -40,7 +40,7 @@ The Hospital Appointment Management System is designed to digitize and simplify 
 
 - **Programming Language:** Java
 - **Concepts Used:** Object-Oriented Programming (OOP)
-- **IDE:** IntelliJ IDEA / Eclipse / VS Code
+- **IDE:** Eclipse / VS Code
 - **UML Modelling:** PlantUML
 - **Version Control:** Git & GitHub
 
@@ -104,9 +104,9 @@ Sample Input / Output
         Status: Confirmed
 
 Tool/Technologies Used
-    PLantYML
-    Eclipse IDE 
-    VS Code
+        PLantUML
+        Eclipse IDE 
+        VS Code
 
 Academic Information
 
