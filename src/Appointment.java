@@ -61,4 +61,15 @@ public class Appointment
                 ", Time: " + time +
                 ", Status: " + status;
     }
+    public int getDoctorId() {
+        return doctorId;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getStatus() {
+        return status;
+    }
 }
