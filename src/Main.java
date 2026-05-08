@@ -8,39 +8,37 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        // Create Hospital System
         HospitalSystem system = new HospitalSystem(1);
 
-        // Fixed Receptionist
-        Receptionist receptionist = new Receptionist(
-                301,
-                "Anu",
-                "8888888888"
-        );
+        Receptionist receptionist =
+                new Receptionist(
+                        301,
+                        "Anu",
+                        "8888888888"
+                );
 
-        // Input Doctor Details
-        System.out.println("======================================");
-        System.out.println(" HOSPITAL APPOINTMENT MANAGEMENT");
-        System.out.println("======================================");
+        // Doctor Creation
+        System.out.println("=========== DOCTOR SETUP ===========");
 
-        System.out.print("\nEnter Doctor ID: ");
+        System.out.print("Enter Doctor ID: ");
         int doctorId = sc.nextInt();
         sc.nextLine();
 
         System.out.print("Enter Doctor Name: ");
         String doctorName = sc.nextLine();
 
-        System.out.print("Enter Doctor Specialization: ");
+        System.out.print("Enter Specialization: ");
         String specialization = sc.nextLine();
 
-        Doctor doctor = new Doctor(
-                doctorId,
-                doctorName,
-                specialization
-        );
+        Doctor doctor =
+                new Doctor(
+                        doctorId,
+                        doctorName,
+                        specialization
+                );
 
-        // Add Doctor Availability
-        System.out.print("\nHow many available slots to add? ");
+        // Add Slots
+        System.out.print("\nEnter number of slots: ");
         int slotCount = sc.nextInt();
         sc.nextLine();
 
@@ -52,48 +50,29 @@ public class Main {
             doctor.setAvailability(slot);
         }
 
-        // Input Patient Details
-        System.out.println("\n========== ENTER PATIENT DETAILS ==========");
+        // MULTIPLE PATIENTS
+        Patient[] patients = new Patient[20];
 
-        System.out.print("Enter Patient ID: ");
-        int patientId = sc.nextInt();
-        sc.nextLine();
-
-        System.out.print("Enter Patient Name: ");
-        String patientName = sc.nextLine();
-
-        System.out.print("Enter Patient Age: ");
-        int age = sc.nextInt();
-        sc.nextLine();
-
-        System.out.print("Enter Contact Number: ");
-        String contact = sc.nextLine();
-
-        Patient patient = new Patient(
-                patientId,
-                patientName,
-                age,
-                contact
-        );
+        int patientCount = 0;
 
         int choice;
 
         do {
 
-            System.out.println("\n======================================");
-            System.out.println("               MENU");
-            System.out.println("======================================");
+            System.out.println("\n=================================");
+            System.out.println(" HOSPITAL APPOINTMENT SYSTEM");
+            System.out.println("=================================");
 
-            System.out.println("1. View Doctor Schedule");
-            System.out.println("2. Book Appointment");
-            System.out.println("3. View Appointments");
-            System.out.println("4. Cancel Appointment");
-            System.out.println("5. Update Patient Details");
-            System.out.println("6. Add Medical Record");
-            System.out.println("7. Generate Hospital Report");
-            System.out.println("8. Exit");
+            System.out.println("1. Add Patient");
+            System.out.println("2. View Doctor Schedule");
+            System.out.println("3. Book Appointment");
+            System.out.println("4. View Patient Appointments");
+            System.out.println("5. Cancel Appointment");
+            System.out.println("6. Generate Report");
+            System.out.println("7. Exit");
 
-            System.out.print("\nEnter your choice: ");
+            System.out.print("\nEnter Choice: ");
+
             choice = sc.nextInt();
             sc.nextLine();
 
@@ -101,103 +80,155 @@ public class Main {
 
                 case 1:
 
-                    doctor.viewSchedule();
+                    if (patientCount >= patients.length) {
+
+                        System.out.println("Patient storage full.");
+                        break;
+                    }
+
+                    System.out.println("\n====== ADD PATIENT ======");
+
+                    System.out.print("Enter Patient ID: ");
+                    int patientId = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter Patient Name: ");
+                    String patientName = sc.nextLine();
+
+                    System.out.print("Enter Patient Age: ");
+                    int age = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter Contact Number: ");
+                    String contact = sc.nextLine();
+
+                    patients[patientCount++] =
+                            new Patient(
+                                    patientId,
+                                    patientName,
+                                    age,
+                                    contact
+                            );
+
+                    System.out.println("Patient added successfully.");
+
                     break;
 
                 case 2:
 
-                    System.out.print("\nEnter Slot to Book: ");
+                    doctor.viewSchedule();
+
+                    break;
+
+                case 3:
+
+                    if (patientCount == 0) {
+
+                        System.out.println("No patients available.");
+                        break;
+                    }
+
+                    System.out.println("\nAvailable Patients:");
+
+                    for (int i = 0; i < patientCount; i++) {
+
+                        System.out.println(
+                                patients[i].getPatientId()
+                                + " - "
+                                + patients[i].getName()
+                        );
+                    }
+
+                    System.out.print("\nEnter Patient ID: ");
+
+                    int selectedId = sc.nextInt();
+                    sc.nextLine();
+
+                    Patient selectedPatient = null;
+
+                    for (int i = 0; i < patientCount; i++) {
+
+                        if (patients[i].getPatientId() == selectedId) {
+
+                            selectedPatient = patients[i];
+                            break;
+                        }
+                    }
+
+                    if (selectedPatient == null) {
+
+                        System.out.println("Patient not found.");
+                        break;
+                    }
+
+                    System.out.print("Enter Slot to Book: ");
+
                     String bookingSlot = sc.nextLine();
 
                     receptionist.scheduleAppointment(
                             system,
-                            patient,
+                            selectedPatient,
                             doctor,
                             bookingSlot
                     );
 
                     break;
 
-                case 3:
-
-                    patient.viewAppointments();
-                    break;
-
                 case 4:
 
-                    System.out.print("\nEnter Appointment ID to Cancel: ");
-                    int cancelId = sc.nextInt();
+                    System.out.print("\nEnter Patient ID: ");
 
-                    patient.cancelAppointment(cancelId);
+                    int viewId = sc.nextInt();
+
+                    for (int i = 0; i < patientCount; i++) {
+
+                        if (patients[i].getPatientId() == viewId) {
+
+                            patients[i].viewAppointments();
+                        }
+                    }
+
                     break;
 
                 case 5:
 
-                    System.out.print("\nEnter New Name: ");
-                    String newName = sc.nextLine();
+                    System.out.print("\nEnter Patient ID: ");
 
-                    System.out.print("Enter New Age: ");
-                    int newAge = sc.nextInt();
-                    sc.nextLine();
+                    int cancelPatientId = sc.nextInt();
 
-                    System.out.print("Enter New Contact Number: ");
-                    String newContact = sc.nextLine();
+                    System.out.print("Enter Appointment ID: ");
 
-                    patient.updateDetails(
-                            newName,
-                            newAge,
-                            newContact
-                    );
+                    int appointmentId = sc.nextInt();
+
+                    for (int i = 0; i < patientCount; i++) {
+
+                        if (patients[i].getPatientId() == cancelPatientId) {
+
+                            patients[i].cancelAppointment(
+                                    appointmentId
+                            );
+                        }
+                    }
 
                     break;
 
                 case 6:
 
-                    System.out.println("\n====== ADD MEDICAL RECORD ======");
-
-                    System.out.print("Enter Record ID: ");
-                    int recordId = sc.nextInt();
-                    sc.nextLine();
-
-                    System.out.print("Enter Diagnosis: ");
-                    String diagnosis = sc.nextLine();
-
-                    System.out.print("Enter Prescription: ");
-                    String prescription = sc.nextLine();
-
-                    MedicalRecord record = new MedicalRecord(
-                            recordId,
-                            patient.getPatientId(),
-                            diagnosis,
-                            prescription
-                    );
-
-                    record.addRecord();
-                    record.viewRecord();
+                    system.generateReports();
 
                     break;
 
                 case 7:
 
-                    system.managePatients();
-                    system.manageDoctors();
-                    system.maintainRecords();
-                    system.generateReports();
-
-                    break;
-
-                case 8:
-
                     System.out.println("\nExiting System...");
-                    System.out.println("Thank you.");
                     break;
 
                 default:
 
-                    System.out.println("\nInvalid choice.");
+                    System.out.println("Invalid choice.");
             }
 
-        } while (choice != 8);
+        } while (choice != 7);
 
         sc.close();
     }
