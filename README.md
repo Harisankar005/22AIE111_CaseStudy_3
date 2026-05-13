@@ -88,7 +88,7 @@ CaseStudy/
 1. Clone the repository
 
 ```bash
-git clone <repository-link>
+git clone https://github.com/Harisankar005/22AIE111_CaseStudy_3
 ```
 
 2. Open the project folder
