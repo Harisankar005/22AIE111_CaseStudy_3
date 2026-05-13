@@ -1,53 +1,54 @@
-// ========================= MedicalRecord.java =========================
 package CaseStudy;
-public class MedicalRecord 
-{
+class MedicalRecord {
 
     private int recordId;
+
     private int patientId;
 
     private String diagnosis;
+
     private String prescription;
 
     public MedicalRecord(
             int recordId,
             int patientId,
             String diagnosis,
-            String prescription) 
-    {
+            String prescription) {
 
         this.recordId = recordId;
+
         this.patientId = patientId;
+
         this.diagnosis = diagnosis;
+
         this.prescription = prescription;
     }
 
-    public void addRecord() 
-    {
+    public void addRecord() {
+
         System.out.println("Medical record added.");
     }
 
-    public void updateRecord(String diagnosis, String prescription) 
-    {
+    public void updateRecord(
+            String diagnosis,
+            String prescription) {
 
         this.diagnosis = diagnosis;
+
         this.prescription = prescription;
 
         System.out.println("Medical record updated.");
     }
 
-    public void viewRecord() 
-    {
+    public void viewRecord() {
 
-        System.out.println("\nMedical Record");
-        System.out.println("Record ID: " + recordId);
-        System.out.println("Patient ID: " + patientId);
-        System.out.println("Diagnosis: " + diagnosis);
+        System.out.println("\nDiagnosis: " + diagnosis);
+
         System.out.println("Prescription: " + prescription);
     }
 
-    public void deleteRecord() 
-    {
+    public void deleteRecord() {
+
         diagnosis = "";
         prescription = "";
 

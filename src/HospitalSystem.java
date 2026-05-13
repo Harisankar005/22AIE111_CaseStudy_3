@@ -1,26 +1,30 @@
-// ========================= HospitalSystem.java =========================
 package CaseStudy;
-public class HospitalSystem {
+class HospitalSystem {
 
     private int systemId;
 
-    private Appointment[] appointments = new Appointment[50];
+    private Appointment[] appointments =
+            new Appointment[50];
 
-    private int count = 0;
+    private int appointmentCount = 0;
+
     private int appointmentCounter = 1;
 
     public HospitalSystem(int systemId) {
+
         this.systemId = systemId;
     }
 
-    public boolean checkConflict(int doctorId, String slot) {
+    public boolean checkConflict(
+            int doctorId,
+            String slot) {
 
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < appointmentCount; i++) {
 
             if (appointments[i] != null &&
-                appointments[i].getDoctorId() == doctorId &&
-                appointments[i].getTime().equals(slot) &&
-                !appointments[i].getStatus().equals("Cancelled")) {
+                    appointments[i].getDoctorId() == doctorId &&
+                    appointments[i].getTime().equals(slot) &&
+                    !appointments[i].getStatus().equals("Cancelled")) {
 
                 return true;
             }
@@ -34,70 +38,69 @@ public class HospitalSystem {
             Doctor doctor,
             String slot) {
 
-        System.out.println("\nChecking doctor availability...");
-
         if (!doctor.getSchedule().checkAvailability(slot)) {
 
             System.out.println("Slot unavailable.");
+
             return null;
         }
 
-        // CHECK CONFLICT
-        if (checkConflict(doctor.getDoctorId(), slot)) {
+        if (checkConflict(
+                doctor.getId(),
+                slot)) {
 
             System.out.println("Appointment conflict detected.");
-            System.out.println("Another patient already booked this slot.");
 
             return null;
         }
 
         if (!doctor.confirmAppointment()) {
 
-            System.out.println("Doctor rejected appointment.");
             return null;
         }
 
-        Appointment appointment = new Appointment(
-                appointmentCounter++,
-                "2026-05-10",
-                slot,
-                "Confirmed",
-                patient.getPatientId(),
-                doctor.getDoctorId()
-        );
+        Appointment appointment =
+                new Appointment(
+                        appointmentCounter++,
+                        "2026-05-10",
+                        slot,
+                        "Confirmed",
+                        patient.getId(),
+                        doctor.getId()
+                );
 
-        appointment.createAppointment();
-
-        appointments[count++] = appointment;
+        appointments[appointmentCount++] =
+                appointment;
 
         patient.bookAppointment(appointment);
 
-        System.out.println("Appointment booked successfully.");
+        appointment.createAppointment();
 
         return appointment;
     }
 
     public void generateReports() {
 
-        System.out.println("\n========= HOSPITAL REPORT =========");
+        System.out.println("\n===== REPORT =====");
 
-        System.out.println("Total Appointments: " + count);
-
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < appointmentCount; i++) {
 
             System.out.println(appointments[i]);
         }
     }
 
     public void managePatients() {
-        System.out.println("Managing Patients...");
+
+        System.out.println("Managing patients...");
     }
 
     public void manageDoctors() {
-        System.out.println("Managing Doctors...");
+
+        System.out.println("Managing doctors...");
     }
 
     public void maintainRecords() {
-        System.out.println("Maintaining Medical Records...");
+
+        System.out.println("Maintaining records...");
     }
 }

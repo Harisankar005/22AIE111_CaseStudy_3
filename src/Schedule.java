@@ -1,84 +1,64 @@
-// ========================= Schedule.java =========================
 package CaseStudy;
-public class Schedule 
-{
+class Schedule {
 
     private int doctorId;
 
     private String[] availableSlots = new String[10];
+
     private int count = 0;
 
-    public Schedule(int doctorId) 
-    {
+    public Schedule(int doctorId) {
+
         this.doctorId = doctorId;
     }
 
-    public void addTimeSlot(String slot) 
-    {
-        if (count < availableSlots.length) 
-        {
+    public void addTimeSlot(String slot) {
+
+        if (count < availableSlots.length) {
+
             availableSlots[count++] = slot;
-            System.out.println("Time slot added: " + slot);
-        } 
-        else 
-        {
-            System.out.println("Schedule is full.");
+
+            System.out.println("Slot added: " + slot);
         }
     }
 
-    public void removeTimeSlot(String slot) 
-    {
+    public void removeTimeSlot(String slot) {
 
-        for (int i = 0; i < count; i++) 
-        {
+        for (int i = 0; i < count; i++) {
 
-            if (availableSlots[i].equals(slot)) 
-            {
+            if (availableSlots[i].equals(slot)) {
 
-                for (int j = i; j < count - 1; j++) 
-                {
+                for (int j = i; j < count - 1; j++) {
+
                     availableSlots[j] = availableSlots[j + 1];
                 }
 
                 count--;
 
-                System.out.println("Time slot removed: " + slot);
+                System.out.println("Slot removed.");
                 return;
             }
         }
-
-        System.out.println("Slot not found.");
     }
 
-    public boolean checkAvailability(String slot) 
-    {
+    public boolean checkAvailability(String slot) {
 
-        for (int i = 0; i < count; i++) 
-        {
+        for (int i = 0; i < count; i++) {
 
-            if (availableSlots[i].equals(slot)) 
-            {
-                System.out.println("Slot available.");
+            if (availableSlots[i].equals(slot)) {
+
                 return true;
             }
         }
 
-        System.out.println("Slot unavailable.");
         return false;
     }
 
-    public void showSlots() 
-    {
+    public void showSlots() {
 
-        if (count == 0) 
-        {
-            System.out.println("No available slots.");
-            return;
-        }
+        for (int i = 0; i < count; i++) {
 
-        for (int i = 0; i < count; i++) 
-        {
-            System.out.println(availableSlots[i]);
+            System.out.println((i + 1) + ". " + availableSlots[i]);
         }
     }
 }

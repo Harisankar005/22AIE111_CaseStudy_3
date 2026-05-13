@@ -1,8 +1,8 @@
-// ========================= Appointment.java =========================
 package CaseStudy;
-public class Appointment 
-{
+class Appointment {
+
     private int appointmentId;
+
     private String date;
     private String time;
     private String status;
@@ -19,48 +19,22 @@ public class Appointment
             int doctorId) {
 
         this.appointmentId = appointmentId;
+
         this.date = date;
+
         this.time = time;
+
         this.status = status;
+
         this.patientId = patientId;
+
         this.doctorId = doctorId;
     }
 
-    public void createAppointment() 
-    {
-        System.out.println("Appointment created successfully.");
-    }
-
-    public void cancelAppointment() 
-    {
-        status = "Cancelled";
-    }
-
-    public void rescheduleAppointment(String newTime) 
-    {
-        this.time = newTime;
-        System.out.println("Appointment rescheduled to " + newTime);
-    }
-
-    public boolean checkConflict() 
-    {
-        System.out.println("Checking appointment conflict...");
-        return false;
-    }
-
-    public int getAppointmentId() 
-    {
+    public int getAppointmentId() {
         return appointmentId;
     }
 
-    @Override
-    public String toString() 
-    {
-        return "Appointment ID: " + appointmentId +
-                ", Date: " + date +
-                ", Time: " + time +
-                ", Status: " + status;
-    }
     public int getDoctorId() {
         return doctorId;
     }
@@ -71,5 +45,38 @@ public class Appointment
 
     public String getStatus() {
         return status;
+    }
+
+    public void createAppointment() {
+
+        System.out.println("Appointment created.");
+    }
+
+    public void cancelAppointment() {
+
+        status = "Cancelled";
+    }
+
+    public void rescheduleAppointment(String newTime) {
+
+        time = newTime;
+
+        System.out.println("Appointment rescheduled.");
+    }
+
+    public boolean checkConflict() {
+
+        return false;
+    }
+
+    @Override
+    public String toString() {
+
+        return "Appointment ID: "
+                + appointmentId
+                + ", Time: "
+                + time
+                + ", Status: "
+                + status;
     }
 }

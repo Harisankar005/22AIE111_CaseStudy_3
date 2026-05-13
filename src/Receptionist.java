@@ -1,16 +1,12 @@
-// ========================= Receptionist.java =========================
 package CaseStudy;
-public class Receptionist 
-{
-    private int receptionistId;
-    private String name;
-    private String contactNumber;
+class Receptionist extends Person {
 
-    public Receptionist(int receptionistId, String name, String contactNumber) 
-    {
-        this.receptionistId = receptionistId;
-        this.name = name;
-        this.contactNumber = contactNumber;
+    public Receptionist(
+            int id,
+            String name,
+            String contactNumber) {
+
+        super(id, name, contactNumber);
     }
 
     public Appointment scheduleAppointment(
@@ -19,17 +15,26 @@ public class Receptionist
             Doctor doctor,
             String slot) {
 
-        System.out.println("\nReceptionist is scheduling appointment...");
-        return system.createAppointment(patient, doctor, slot);
+        return system.createAppointment(
+                patient,
+                doctor,
+                slot
+        );
     }
 
-    public void manageAppointments() 
-    {
-        System.out.println("Receptionist is managing appointments.");
+    public void manageAppointments() {
+
+        System.out.println("Managing appointments...");
     }
 
-    public void updateSchedule() 
-    {
-        System.out.println("Receptionist updated the schedule.");
+    public void updateSchedule() {
+
+        System.out.println("Schedule updated.");
+    }
+
+    @Override
+    void displayRole() {
+
+        System.out.println("Role: Receptionist");
     }
 }
