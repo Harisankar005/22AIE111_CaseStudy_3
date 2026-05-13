@@ -1,7 +1,7 @@
 # Hospital Appointment Management System
 
 ## Project Title
-**Hospital Appointment Management System**
+Hospital Appointment Management System
 
 ---
 
@@ -18,99 +18,198 @@
 
 ## Problem Description
 
-Many hospitals still rely on manual appointment booking systems, which can lead to scheduling conflicts, long waiting times, and inefficient record management. Patients often face difficulties in finding available appointment slots, while doctors and receptionists struggle to manage schedules effectively.
+In many hospitals, appointments are still booked manually, which often leads to scheduling conflicts, long waiting times, and inefficient management of patient records.
 
-The Hospital Appointment Management System is designed to digitize and simplify the appointment process. The system allows patients to book and cancel appointments, doctors to manage availability and confirm appointments, and receptionists to organize schedules efficiently. Medical records and appointment details are stored digitally to improve accuracy, reduce errors, and enhance hospital workflow efficiency.
+This Hospital Appointment Management System is designed using Object-Oriented Programming concepts in Java to simplify and automate hospital appointment handling. The system allows:
+
+- Patients to book, view, and cancel appointments
+- Doctors to manage schedules and confirm appointments
+- Receptionists to organize bookings
+- Storage of medical records digitally
+
+The project demonstrates key OOP principles such as:
+- Abstraction
+- Encapsulation
+- Inheritance
+- Polymorphism
 
 ---
 
 ## Features
 
-- Patient appointment booking
-- Appointment cancellation and rescheduling
-- Doctor schedule management
-- Appointment confirmation
-- Medical record maintenance
-- Receptionist-based appointment management
-- Conflict checking for appointments
+- Add multiple doctors
+- Add multiple patients
+- View doctor schedules
+- Book appointments
+- Detect appointment conflicts
+- Cancel appointments
+- Add medical records
+- Generate appointment reports
 
 ---
 
 ## Tools and Technologies Used
 
-- **Programming Language:** Java
-- **Concepts Used:** Object-Oriented Programming (OOP)
-- **IDE:** Eclipse / VS Code
-- **UML Modelling:** PlantUML
-- **Version Control:** Git & GitHub
+- Java
+- Object-Oriented Programming (OOP)
+- Git & GitHub
+- UML Diagrams
+- VS Code / IntelliJ IDEA / Eclipse
 
 ---
 
-## Classes Implemented
+## Project Structure
 
-- Patient
-- Doctor
-- Receptionist
-- Appointment
-- Schedule
-- MedicalRecord
-- HospitalSystem
+```text
+CaseStudy/
+│
+├── Main.java
+├── Person.java
+├── Patient.java
+├── Doctor.java
+├── Receptionist.java
+├── Appointment.java
+├── Schedule.java
+├── MedicalRecord.java
+└── HospitalSystem.java
+```
 
 ---
 
 ## How to Run the Code
 
 ### Prerequisites
+
 - Java JDK 8 or above installed
 - Any Java IDE or terminal
 
-### Steps to Run
+### Steps
 
-1. Clone the repository:
+1. Clone the repository
+
 ```bash
-git clone https://github.com/Harisankar005/22AIE111_CaseStudy_3/tree/main
+git clone <repository-link>
 ```
-2. Open the project in your preferred IDE.
-    Compile the Java files:
-      javac *.java
-3. Run the main file:
-    java Main
-Sample Input / Output
 
-        Sample Input
-        1. Add Patient
-        2. Add Doctor
-        3. Book Appointment
-        4. View Appointments
-        
-        Enter your choice: 3
-        
-        Enter Patient ID: 101
-        Enter Doctor ID: 201
-        Enter Appointment Date: 12-05-2026
-        Enter Appointment Time: 10:30 AM
-        Sample Output
-        Checking doctor availability...
-        
-        Doctor available.
-        Appointment created successfully.
-        
-        Appointment Details:
-        Appointment ID: 301
-        Patient ID: 101
-        Doctor ID: 201
-        Date: 12-05-2026
-        Time: 10:30 AM
-        Status: Confirmed
+2. Open the project folder
 
-## Tool/Technologies Used
+3. Compile all Java files
 
-- PlantUML
-- Eclipse IDE 
-- VS Code
+```bash
+javac CaseStudy/*.java
+```
 
-Academic Information
+4. Run the program
 
-    Course: 22AIE111 Object Oriented Programming in Java
-    Department: Computer Science and Engineering
-    Institution: Amrita School of Computing, Amritapuri Campus
+```bash
+java CaseStudy.Main
+```
+
+---
+
+## Sample Input / Output
+
+### Sample Menu
+
+```text
+================================
+ HOSPITAL MANAGEMENT SYSTEM
+================================
+
+1. Add Doctor
+2. Add Patient
+3. View Doctors
+4. Book Appointment
+5. View Patient Appointments
+6. Cancel Appointment
+7. Add Medical Record
+8. Generate Report
+9. Exit
+```
+
+---
+
+### Sample Input
+
+```text
+Enter choice: 1
+
+Enter Doctor ID: 101
+Enter Doctor Name: Arun
+Enter Contact Number: 9876543210
+Enter Specialization: Cardiologist
+
+Enter number of slots: 2
+
+Enter slot 1: 10:00 AM
+Enter slot 2: 11:00 AM
+```
+
+---
+
+### Sample Output
+
+```text
+Slot added: 10:00 AM
+Slot added: 11:00 AM
+Doctor added successfully.
+```
+
+---
+
+### Appointment Booking Example
+
+#### Input
+
+```text
+Enter Doctor ID: 101
+Enter Patient ID: 201
+Enter slot to book: 10:00 AM
+```
+
+#### Output
+
+```text
+Doctor confirmed appointment.
+Appointment added successfully.
+Appointment created.
+```
+
+---
+
+## OOP Concepts Used
+
+### Abstraction
+- `Person` class is declared as an abstract class.
+
+### Inheritance
+- `Patient`, `Doctor`, and `Receptionist` inherit from `Person`.
+
+### Encapsulation
+- Class attributes are declared private and accessed using methods.
+
+### Polymorphism
+- Method overriding is used for `displayRole()`.
+
+---
+
+## UML Diagrams Included
+
+- Class Diagram
+- Use-Case Diagram
+- Sequence Diagram
+
+---
+
+## Academic Information
+
+**Course:** 22AIE111 Object Oriented Programming in Java  
+**Department:** Computer Science and Engineering  
+**Institution:** Amrita School of Computing, Amritapuri Campus
+
+---
+
+## References
+
+- Java Documentation: https://docs.oracle.com/javase/tutorial/
+- UML Basics: https://www.uml.org/
